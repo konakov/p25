@@ -1,7 +1,7 @@
 #! /bin/zsh
 #The script counts pomodoro time in the terminal window and writes the pomodoro's start and finish to the log file
 
-log_file='/home/skonakov/pomodoro.log'
+log_file='/home/YOUR NAME HERE/pomodoro.log'
 pomodoro_duration_in_minutes=25
 
 
