@@ -1,0 +1,21 @@
+#! /bin/zsh
+#The script counts pomodoro time in the terminal window and writes the pomodoro's start and finish to the log file
+
+log_file='/home/skonakov/pomodoro.log'
+pomodoro_duration_in_minutes=25
+
+
+echo -n "$1 — started at " >> $log_file
+LANG=ru date | tee -a ~/pomodoro.log
+
+seconds=60*pomodoro_duration_in_minutes-1
+
+date1=$((`date +%s` + $seconds)); 
+while [ "$date1" -ge `date +%s` ]; do
+    sleep 0.3
+    echo -ne "$(date -u --date @$(($date1 - `date +%s` )) +%H:%M:%S)\r";
+done
+
+echo -n "$1 — finished X at " >> ~/pomodoro.log
+LANG=ru date | tee -a ~/pomodoro.log
+echo >> ~/pomodoro.log
